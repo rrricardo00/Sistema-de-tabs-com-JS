@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        .tab-sair {
+            background: red ;
+        }
+
+        .section-sair {
+            display: none;
+        }
+    </style>
+
+    <nav style="display: flex;margin-bottom: 20px;">
+        <div class="tab">aba 1</div>
+        <div class="tab">aba 2</div>
+        <div class="tab">aba 3</div>
+    </nav>
+
+    <section class="sessao">
+        teste 1
+    </section>
+    <section class="sessao">
+        teste 2
+    </section>
+    <section class="sessao">
+        teste 3
+    </section>
+
+
+
+    <script>
+        const tab = document.querySelectorAll('.tab');
+        const sessao = document.querySelectorAll('.sessao');
+        sessao.forEach(item => item.classList.add('section-sair'));
+        sessao[0].classList.remove('section-sair');
+        tab[0].classList.add('tab-sair')
+
+        tab.forEach((item, index) => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                tab.forEach(item => {
+                    item.classList.remove('tab-sair');
+                    sessao.forEach(item => item.classList.add('section-sair'));
+                    if (!sessao[index]) {
+                        return null;
+                    } else {
+                        sessao[index].classList.remove('section-sair');
+                    }
+
+                });
+                e.target.classList.add('tab-sair');
+
+            })
+
+        })
+
+
+    </script>
+
+</body>
+
+</html>
